@@ -1,0 +1,86 @@
+.keylayout-container {
+    position: absolute;
+    width: 100%;
+    height: 390px;
+    margin-top: 77px;
+    box-sizing: border-box;
+    background-color: black;
+    display: flex;
+    box-sizing: border-box;
+    flex-direction: row;
+    flex-wrap: wrap;
+    box-shadow: 0 0 10px yellowgreen; 
+    color: white;
+}
+
+.numberContainer {
+    display: flex;
+    height: 100%;
+    width: 75%;
+    flex-wrap: wrap;
+}
+
+.numberContainer .key {
+    height: 100px;
+    width: 60px;
+    text-align: center;
+    display: block;
+    margin-right: 5px;
+    transition: 0.2s ease-in;
+    border: 1px solid black;
+}
+.numberContainer .key:hover {
+    cursor: pointer;
+    border-top: 1px solid yellowgreen;
+    box-shadow: 0 0 10px yellowgreen;
+}
+.numberContainer .key p{
+    font-size: 50px;
+    color: yellowgreen;
+    font-family: 'Chakra Petch', sans-serif;
+}
+
+.reset {
+    position: absolute;
+    height: 100%;
+    width: 20%;
+    background-color: rgb(33, 235, 33);
+    left: 55%;
+    cursor: pointer;
+    writing-mode: vertical-lr;
+    text-orientation: upright;
+    text-align: center;
+    box-shadow: 0 0 10px rgb(33, 235, 33);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    letter-spacing: 10px;
+}
+
+.reset p {
+    font-size: 40px;
+    font-family: 'Chakra Petch', sans-serif;
+    cursor: pointer;
+}
+
+.operator-container {
+    float: right;
+    margin-top: 5px;
+}
+
+.operator-container .key {
+    cursor: pointer;
+    position: relative;
+    height: 20%;
+    width: 80px;
+    text-align: center;
+}
+
+.operator-container .key p{
+    font-size: 30px;
+    display: block;
+    padding: 2px;
+    border-bottom: 5px solid tomato;
+    border-bottom-right-radius: 5px;
+
+}
