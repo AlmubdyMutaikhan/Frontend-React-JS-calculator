@@ -5,16 +5,9 @@ import KeyLayout from '../keyLayout/keyLayout'
 
 const Calculator = () => {
     /* INIT STATE */
-    // stores number values for input layout
-    const [numberValues] = useState([
-        '1','2','3','4','5','6','7','8','9','0','.','ce'
-    ]);
     // displayValue stores the number displayed on the input screen
     const [displayValue, setDisplayValue] = useState('0');
-    // describes arithmetic operator which is gonna be processed
-    const [operators] = useState([
-        '+','-','x','/','='
-    ]);
+    // describes which operator is currently chosen
     const [selectedOperator, setSelectedOperator] = useState('');
     // stores old value of number operations
     const [storedValue, setStoredValue] = useState('0'); 
@@ -27,7 +20,7 @@ const Calculator = () => {
             let floatDisplayValue = parseFloat(displayValue);
             let floatStoredValue = parseFloat(storedValue); // this value is stored, but never displayed
             let resultValue = 0
-    
+            
             if(selectedOperator === '+') {
                 // do sum
                 resultValue = floatDisplayValue + floatStoredValue;
@@ -71,26 +64,37 @@ const Calculator = () => {
             if(displayValue === '0') {
                 setDisplayValue(value);
             } else {
-                setDisplayValue(displayValue + value);
+                if(selectedOperator) {
+                    setStoredValue(displayValue);
+                    setDisplayValue(value);
+                } else {
+                    setDisplayValue(displayValue + value);
+                }
             }
         }
     }
     
-    const setOperator = (value) => {
-        if(operators.includes(value)) {
-            if(value !== '=') {
-                setStoredValue(displayValue);
-                setDisplayValue('0');
-                setSelectedOperator(value);
+    const setOperator = (operatorValue) => {
+            if(operatorValue !== '=') {
+                // if there is already stored value and user wants do next operation immediately
+                if(storedValue && selectedOperator) {
+                    processCalculation();
+                    setStoredValue('');
+                    setSelectedOperator(operatorValue);
+                } else {
+                    setStoredValue(displayValue);
+                    setDisplayValue('0');
+                    setSelectedOperator(operatorValue);
+                }
             } else {
                 processCalculation();
             }
-        }
     }
 
     const clearDisplay = () => {
         setDisplayValue('0');
         setStoredValue('0');
+        setSelectedOperator('');
     }
 
     return(
@@ -98,8 +102,6 @@ const Calculator = () => {
             <InputDisplay displayValue={displayValue}/>
             <KeyLayout 
                 clearDisplay={clearDisplay}
-                operators={operators}
-                numbers={numberValues}
                 setOperator={setOperator}
                 updateDisplayForNumbers={updateDisplay}
                 processCalculation={processCalculation}
