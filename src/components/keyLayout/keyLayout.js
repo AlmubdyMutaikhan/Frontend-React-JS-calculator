@@ -1,7 +1,7 @@
 import './styles/index.css'
 import { useState } from 'react'
 
-const KeyLayout = ({updateDisplay, clearAll, setOperator}) => {
+const KeyLayout = ({substractOperationCondition, updateDisplay, clearAll, setOperator}) => {
      /* INIT STATE */
     // stores number values for input layout
     const [numberValues] = useState([
@@ -14,6 +14,13 @@ const KeyLayout = ({updateDisplay, clearAll, setOperator}) => {
     ]);
     
     // DEFINE PROCESS HANDLING FUNCTIONS
+    const getOperatorValueFromLayout = (value) => {
+        if(value === '-' && !substractOperationCondition) {
+            updateDisplay(value);
+        } else {
+            setOperator(value);
+        }
+    }
     // checks whether operator value is valid or not
     
     // create key layout for number values
@@ -25,8 +32,8 @@ const KeyLayout = ({updateDisplay, clearAll, setOperator}) => {
 
     // create key layout for operator values
     const operatorKeys = operators.map((value, iterator) => (
-        <div className="key" key={`${value}${iterator}`} >
-            <p  onClick={(event) => setOperator(event.target.innerHTML)}>{value}</p>
+        <div className="key" key={`${value}${iterator}`} onClick={(event) => getOperatorValueFromLayout(event.target.innerHTML)}>
+            {value}
         </div>
     ))
      

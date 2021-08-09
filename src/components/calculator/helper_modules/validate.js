@@ -16,16 +16,14 @@ const validateNumberValue = (dispayValue, sign) => {
         let resultValue = null;
         // check for point, left '.' if value doesn't have any
         if(sign === '.') {
-            sign = dispayValue.includes('.') ? '' : '.';
+            sign = dispayValue.includes('.') ? '' : '0.';
         }
         
         // check for '-'
         if(sign === '-') {
             // if number doesnt have '-' then
             if(!dispayValue.includes('-')) {
-                resultValue = '-'; // set '-' to the first position
-                resultValue = resultValue.concat(dispayValue); // then concat it with current value
-                return resultValue; 
+                return '-';
             } else {
                 // ignore its value by clearing 
                 sign = '';
