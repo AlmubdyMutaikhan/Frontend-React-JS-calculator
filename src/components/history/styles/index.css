@@ -4,15 +4,25 @@
 .history-container {
     position: absolute;
     top: -15%;
-    right: 170%;
+    right: 160%;
 }
 
 .history-container .history {
     color: white;
     font-size: 50px;
+}
 
+.current-operation {
+    color:rgb(26, 224, 26);
+    margin-bottom: 20px;
+}
+
+.current-operation span{
+    color:tomato;
+    font-size: 20px;
 }
 
 .history-container p {
-    color: rgb(26, 224, 26);
+    color: rgb(28, 114, 28);
+    font-size: 25px;
 }

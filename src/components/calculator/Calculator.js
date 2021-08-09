@@ -2,6 +2,8 @@ import { useState } from 'react'
 import './styles/index.css'
 import InputDisplay from '../inputDisplay/InputDisplay'
 import KeyLayout from '../keyLayout/keyLayout'
+import History from '../history/History'
+
 // import modules
 import * as Validate from './helper_modules/validate'
 import * as myMath from './helper_modules/calc'
@@ -12,11 +14,10 @@ const Calculator = () => {
     const [storedValue, setStoredValue] = useState('');     // previous value going to be participated in the operation 
     const [selectedOperator, setSelectedOperator] = useState(''); // current arithmetic operator to do calc.
     const [substractOperationCondition, setSubstractOperationCondition] = useState(false); // stores info about '-' whether it should be as operator or sign of negative number
-    
+    const [recentOperation, setRecentOperation] = useState('');
     /* METHODS */
     // gets new entered value from key-layout and update display
     const updateDisplay = (value) => {
-        console.log(substractOperationCondition);
         if(value === 'ce') {
             // shorten for 1 numeric letter and update this state 
             const shortedValue = displayValue.slice(0, displayValue.length - 1);
@@ -39,7 +40,6 @@ const Calculator = () => {
 
     // set arithmetic operator to selectedOperator state
     const setOperator = (operator) => {
-        console.log(substractOperationCondition);
         // set operator only after selecting number
         if(displayValue || storedValue) {
             // validate operator
@@ -69,11 +69,16 @@ const Calculator = () => {
 
         setStoredValue('0');
         setDisplayValue(resultValue);
+        setRecentOperation(`${firstNumber}${selectedOperator}${secondNumber}=${resultValue}`);
+        setSelectedOperator('');
+        setSubstractOperationCondition(true);
     }
     
     return(
         <div className="calculator-container">
-            <h1>{selectedOperator}</h1>
+            <History recentOperation={recentOperation}
+                     currentOperator={selectedOperator}    
+            />
             <InputDisplay displayValue={displayValue}/>
             <KeyLayout updateDisplay={updateDisplay}
                        clearAll={clearAll}
