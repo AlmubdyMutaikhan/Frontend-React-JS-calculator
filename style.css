@@ -1,0 +1,105 @@
+* { 
+  margin: 0; 
+  padding: 0; 
+} 
+
+body {
+  background-color: black;
+}
+
+/* 
+  Every block has a size of 90x90 
+*/ 
+
+/* 
+  7 8 9 c +   
+  6 5 4 l -  
+  3 2 1 e x 
+  0 c . r / 
+          = 
+*/ 
+
+.calculator { 
+  position: absolute; 
+  top: 50%; 
+  left: 50%; 
+  transform: translate(-50%, -50%); 
+  height: 470px; 
+  width: 450px; 
+  display: flex; 
+  flex-direction: column; 
+  margin-top: 50px; 
+} 
+
+h1 { 
+  font-size: 70px; 
+  position: absolute; 
+  left: 50%; 
+  top: 30px; 
+  color: tomato; 
+  transform: translate(-50%,-50%); 
+} 
+
+
+.input { 
+  height: 10%; 
+  width: 100%; 
+  border: none; 
+  outline: none; 
+  border-bottom: 1px solid orangered; 
+  color: black;
+  text-align: right;
+  margin-bottom: 5px; 
+} 
+
+.layout { 
+  background: orangered; 
+  height: 360px; 
+  width: 100%; 
+  display: flex;
+} 
+
+.layout .numbers { 
+  box-sizing: border-box;
+  display: flex; 
+  width: 270px; 
+  height: 100%; 
+  background: orange;  
+  flex-wrap: wrap;  
+  flex-direction: row;  
+  justify-content: space-around;
+} 
+
+.numbers div {
+  height: 87px;
+  width: 87px;
+  background-color: chartreuse;
+  border: 1px solid green;
+  text-align: center;
+  line-height: 87px;
+  font-size: 40px;
+}
+
+.layout .clear {
+  height: 100%;
+  width: 90px;
+  background-color: red;
+}
+
+.layout .operators {
+  height: 100%;
+  width: 90px;
+  background-color: blueviolet;
+  display: flex;
+  flex-direction: column;
+}
+
+.operators div {
+  height: 25%;
+  width: 99%;
+  display: flex;
+  justify-content: center;
+  font-size: 40px;
+  align-items: center;
+  border: 1px solid greenyellow;
+}

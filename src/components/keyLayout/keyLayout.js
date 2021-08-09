@@ -1,7 +1,7 @@
 import './styles/index.css'
 import { useState } from 'react'
 
-const KeyLayout = ({setOperator, updateDisplayForNumbers, clearDisplay}) => {
+const KeyLayout = () => {
      /* INIT STATE */
     // stores number values for input layout
     const [numberValues] = useState([
@@ -15,22 +15,17 @@ const KeyLayout = ({setOperator, updateDisplayForNumbers, clearDisplay}) => {
     
     // DEFINE PROCESS HANDLING FUNCTIONS
     // checks whether operator value is valid or not
-    const validateOperator = (operatorValue) => {
-        if(operators.includes(operatorValue)) {
-            setOperator(operatorValue);
-        } 
-    }
-
+    
     // create key layout for number values
     const numberKeys = numberValues.map((value, iterator) => (
-        <div className="key" key={`${value}${iterator}`}  onClick={() => (updateDisplayForNumbers(value))}>
+        <div className="key" key={`${value}${iterator}`}>
             <p>{value}</p>
         </div>
     ))
 
     // create key layout for operator values
     const operatorKeys = operators.map((value, iterator) => (
-        <div className="key" key={iterator} onClick={event => (validateOperator(event.target.innerHTML))}>
+        <div className="key" key={iterator}>
             <p>{value}</p>
         </div>
     ))
@@ -38,7 +33,7 @@ const KeyLayout = ({setOperator, updateDisplayForNumbers, clearDisplay}) => {
     return(
        <div className="keylayout-container">
            <div className="numberContainer">{numberKeys}</div>
-           <div className="reset" onClick={clearDisplay}><p>Clear</p></div>
+           <div className="reset"><p>Clear</p></div>
            <div className="operator-container">{operatorKeys}</div>
        </div>
    )

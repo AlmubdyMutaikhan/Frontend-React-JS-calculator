@@ -1,0 +1,18 @@
+* {
+    font-family: 'Chakra Petch', sans-serif;
+}
+.history-container {
+    position: absolute;
+    top: -15%;
+    right: 170%;
+}
+
+.history-container .history {
+    color: white;
+    font-size: 50px;
+
+}
+
+.history-container p {
+    color: rgb(26, 224, 26);
+}
