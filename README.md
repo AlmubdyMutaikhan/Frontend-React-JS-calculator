@@ -15,6 +15,11 @@
 * If you want to perform operations further, select next math operation. Calculation is processed automatically.
 * CE button is used to remove last entered character.
 * Clear button is used to reset values and clear the display.
+
+## Attention
+ 1. For the current time web-app isn't responsive.
+ 2. Do only arithmetic operations. (No %, square root and etc.)
+ 
  
 ## Local Setup
 
