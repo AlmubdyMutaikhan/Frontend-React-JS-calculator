@@ -15,6 +15,7 @@ const Calculator = () => {
     const [selectedOperator, setSelectedOperator] = useState(''); // current arithmetic operator to do calc.
     const [substractOperationCondition, setSubstractOperationCondition] = useState(false); // stores info about '-' whether it should be as operator or sign of negative number
     const [recentOperation, setRecentOperation] = useState('');
+    const [doNextOperation, setDoNextOperation] = useState(false);
     /* METHODS */
     // gets new entered value from key-layout and update display
     const updateDisplay = (value) => {
@@ -24,11 +25,16 @@ const Calculator = () => {
                 const shortedValue = displayValue.slice(0, displayValue.length - 1);
                 setDisplayValue(shortedValue);
             } else {
-                // validate number value and return new value
+                if(!storedValue && selectedOperator && displayValue) {
+                    setStoredValue(displayValue);
+                    setDisplayValue(value);
+                } else {
+                    // validate number value and return new value
                 const newValue = Validate.validateNumberValue(displayValue, value);
                 console.log(newValue);
                 setDisplayValue(newValue); 
                 setSubstractOperationCondition(true);
+                }     
             }
         }
     }
@@ -46,12 +52,18 @@ const Calculator = () => {
         if(displayValue && displayValue !== '-') {
             // validate operator
             if(Validate.validateOperator(operator)) {
-                setSelectedOperator(operator);
-                // if displayValue zero than we only change operator value 
+                if(displayValue && selectedOperator && storedValue) {
+                    // if all params are valid (f,o,s) then calc them
+                    calculate();
+                    setSelectedOperator(operator);
+                } else {
+                        // if displayValue zero than we only change operator value 
                     // in order to display operator on the screen
                     setStoredValue(displayValue); // store displayed value in temp storage
                     setDisplayValue('0'); // set display as 0 to wait for next number
                     setSubstractOperationCondition(false);
+                    setSelectedOperator(operator);
+                }            
             }
 
             if(storedValue && displayValue && selectedOperator && operator === '=') {
@@ -60,16 +72,13 @@ const Calculator = () => {
         }
     }
 
-    // calculate result value
+    // calculate result value and resets some values
     const calculate = () => {
         const firstNumber = parseFloat(storedValue);
         const secondNumber = parseFloat(displayValue);
-
-        const resultValue = myMath.calculate(firstNumber, secondNumber, selectedOperator);
-
-        
+        const resultValue = myMath.calculate(firstNumber, secondNumber, selectedOperator);        
         if(resultValue !== 'Math Arithmetic Error') {
-            setStoredValue('0');
+            setStoredValue('');
             setDisplayValue(resultValue);
             const resRecentValue = Validate.validateOutput(`${firstNumber}${selectedOperator}${secondNumber}=${resultValue.substring(0,11)}`);
             setRecentOperation(resRecentValue);

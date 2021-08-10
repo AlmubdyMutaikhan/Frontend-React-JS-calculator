@@ -52,7 +52,7 @@ const validateNumberValue = (dispayValue, sign) => {
 
 const validateOperator = (operator) => {
     console.log("we get " + operator);
-    const OPERATORS = ['+','-','/','x'];
+    const OPERATORS = ['+','-','/','x','='];
     return OPERATORS.includes(operator);
 }
 
