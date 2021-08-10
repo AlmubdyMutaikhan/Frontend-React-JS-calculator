@@ -1,7 +1,12 @@
 # Simple, but unique calculator in React.js
+![Снимок](https://user-images.githubusercontent.com/71497569/128911090-cc103120-d1e4-40c9-b277-36f7588db48b.PNG)
+
+# Try it!
+> https://qwasar-react-calc.herokuapp.com/
 
 ## description
-Sample implementation of electronic calculator on the web using React.js framework.
+> Sample implementation of electronic calculator on the web using React.js framework.
+
  
 ## Local Setup
 
