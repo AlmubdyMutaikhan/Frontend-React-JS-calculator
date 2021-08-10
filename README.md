@@ -1,6 +1,8 @@
 # Simple, but unique calculator in React.js
-## description
 
+## description
+> Sample implementation of electronic calculator on the web using React.js framework.
+> 
 ## Local Setup
 
 ```sh
