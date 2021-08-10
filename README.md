@@ -10,9 +10,9 @@
 ## UX of calculator / How to use ?
 * Behaves as electronic calculator.
 * Select firstnumber -> select operator -> select second number and click '=' to process calculation.
-* After selecting number or operator display is set as 0 and waits for new value.
-* To process calculate click '=' button. 
-* If you want to perform operations further and more, select next math operation. Calculation is processed automatically.
+* After selecting number or operator, display is set as 0 and waits for new value.
+* To process calculation click '=' button. 
+* If you want to perform operations further, select next math operation. Calculation is processed automatically.
 * CE button is used to remove last entered character.
 * Clear button is used to reset values and clear the display.
  
