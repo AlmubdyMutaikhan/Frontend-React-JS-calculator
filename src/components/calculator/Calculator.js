@@ -15,25 +15,29 @@ const Calculator = () => {
     const [selectedOperator, setSelectedOperator] = useState(''); // current arithmetic operator to do calc.
     const [substractOperationCondition, setSubstractOperationCondition] = useState(false); // stores info about '-' whether it should be as operator or sign of negative number
     const [recentOperation, setRecentOperation] = useState('');
-    const [doNextOperation, setDoNextOperation] = useState(false);
+   
     /* METHODS */
     // gets new entered value from key-layout and update display
     const updateDisplay = (value) => {
         if(value) {
             if(value === 'ce') {
-                // shorten for 1 numeric letter and update this state 
-                const shortedValue = displayValue.slice(0, displayValue.length - 1);
-                setDisplayValue(shortedValue);
+                if(displayValue.length > 1) {
+                    // shorten for 1 numeric letter and update this state 
+                    const shortedValue = displayValue.slice(0, displayValue.length - 1);
+                    setDisplayValue(shortedValue);
+                }
+                
             } else {
                 if(!storedValue && selectedOperator && displayValue) {
+                    setSubstractOperationCondition(false);
                     setStoredValue(displayValue);
                     setDisplayValue(value);
                 } else {
                     // validate number value and return new value
-                const newValue = Validate.validateNumberValue(displayValue, value);
-                console.log(newValue);
-                setDisplayValue(newValue); 
-                setSubstractOperationCondition(true);
+                    const newValue = Validate.validateNumberValue(displayValue, value);
+                    console.log(newValue);
+                    setDisplayValue(newValue); 
+                    setSubstractOperationCondition(true);
                 }     
             }
         }
@@ -44,6 +48,7 @@ const Calculator = () => {
         setSelectedOperator('');
         setStoredValue('');
         setSubstractOperationCondition(false);
+        setRecentOperation('');
     }
 
     // set arithmetic operator to selectedOperator state
@@ -56,6 +61,7 @@ const Calculator = () => {
                     // if all params are valid (f,o,s) then calc them
                     calculate();
                     setSelectedOperator(operator);
+                    setSubstractOperationCondition(false);
                 } else {
                         // if displayValue zero than we only change operator value 
                     // in order to display operator on the screen
