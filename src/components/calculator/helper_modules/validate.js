@@ -32,13 +32,15 @@ const validateNumberValue = (dispayValue, sign) => {
 
         if(dispayValue === '0') {
             resultValue = sign;
-        } else {
+        } else if(!isNaN(sign)){
             resultValue = dispayValue.concat(sign); 
+        } else {
+            resultValue = dispayValue;
         }
 
         return resultValue; 
     } else {
-        return '0';
+        return 'Error';
     }
 }
 
@@ -54,7 +56,17 @@ const validateOperator = (operator) => {
     return OPERATORS.includes(operator);
 }
 
+const validateOutput = (value) => {
+    if(value.length > 10) {
+        const outputTag = document.getElementById('log');
+        outputTag.style.fontSize="10px";    
+    }
+
+    return value;
+}
+
 export {
     validateNumberValue,
-    validateOperator
+    validateOperator,
+    validateOutput
 }

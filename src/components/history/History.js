@@ -24,7 +24,7 @@ const History = ({recentOperation, currentOperator}) => {
             <h2 className="history">History</h2>
             <h3 className="current-operation">Current math operation: <span>{`[ ${currentOperator} ]` } </span></h3>
             {data.history.map((value, iterator) => (
-                <div key={iterator}><p>{value}</p></div>
+                <div key={iterator}><p id="log">{value}</p></div>
             ))}
            
         </div>

@@ -15,31 +15,27 @@ const calculate = (firstNumber, secondNumber, operator) => {
             // sum :D
             resultValue = sum(firstNumber, secondNumber);
         }
+        resultValue = resultValue.toString();
     }
 
-    return resultValue;
+    return resultValue.includes('NaN') || resultValue.includes('Infinity') ? "Math Arithmetic Error" : resultValue; 
 }
 
 
 const substract = (firstNumber, secondNumber) => {
-    const value = (firstNumber - secondNumber).toString();
-    
-    return value === "NaN" || value === "Infinity" ? "Math Arithmetic Error" : value; 
+    return firstNumber - secondNumber;
 }
 
 const sum = (firstNumber, secondNumber) => {
-    const value = (firstNumber + secondNumber).toString();
-    return value === "NaN" || value === "Infinity" ? "Math Arithmetic Error" : value; 
+    return firstNumber + secondNumber;
 }
 
 const divide = (firstNumber, secondNumber) => {
-    const value = (firstNumber / secondNumber).toString();
-    return value === "NaN" || value === "Infinity" ? "Math Arithmetic Error" : value; 
+    return firstNumber / secondNumber;
 }
 
 const multiply = (firstNumber, secondNumber) => {
-    const value = (firstNumber * secondNumber).toString();
-    return value === "NaN" || value === "Infinity" ? "Math Arithmetic Error" : value; 
+    return firstNumber * secondNumber;
 }
 
 export {
