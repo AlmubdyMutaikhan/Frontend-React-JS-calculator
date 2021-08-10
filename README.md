@@ -2,7 +2,7 @@
 
 ## description
 > Sample implementation of electronic calculator on the web using React.js framework.
-> 
+> a
 ## Local Setup
 
 ```sh
