@@ -4,9 +4,17 @@
 # Try it!
 > https://qwasar-react-calc.herokuapp.com/
 
-## description
-> Sample implementation of electronic calculator on the web using React.js framework.
+## Description
+> Sample implementation of electronic calculator on the web with basic functionalities using React.js framework. 
 
+## UX of calculator / How to use ?
+* Behaves as electronic calculator.
+* Select firstnumber -> select operator -> select second number and click '=' to process calculation.
+* After selecting number or operator display is set as 0 and waits for new value.
+* To process calculate click '=' button. 
+* If you want to perform operations further and more, select next math operation. Calculation is processed automatically.
+* CE button is used to remove last entered character.
+* Clear button is used to reset values and clear the display.
  
 ## Local Setup
 
@@ -15,7 +23,7 @@ $ git clone https://github.com/AlmubdyMutaikhan/Frontend-React-JS-calculator.git
 ```
 
 ```sh
-$ cd react-calculator
+$ cd Frontend-React-JS-calculator
 ```
 
 ```sh
